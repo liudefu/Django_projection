@@ -16,7 +16,7 @@ import os
 import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, BASE_DIR + "/apps/")
+sys.path.append(BASE_DIR + "/apps")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -101,6 +101,13 @@ CACHES = {
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
+    },
+    "code": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
     }
 }
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
@@ -182,7 +189,13 @@ LOGGING = {
 
 REST_FRAMEWORK = {
     # 异常处理
+    # 'DEFAULT_RENDERER_CLASSES': (  # 默认响应渲染类
+    #     'rest_framework.renderers.JSONRenderer',  # json渲染器
+    #     'rest_framework.renderers.BrowsableAPIRenderer',  # 浏览API渲染器
+    # ),
     'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
+
 }
 
 AUTH_USER_MODEL = "users.User"
+

@@ -20,5 +20,6 @@ import apps.users.urls
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r"^users/", include("users.urls", namespace="users")),
+    url(r"^verifications/", include("verifications.urls", namespace="verifications")),
     # url(r"^users/", apps.users.urls, name="users"),
 ]
