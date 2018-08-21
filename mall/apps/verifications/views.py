@@ -1,5 +1,4 @@
 from django.http import HttpResponse, JsonResponse
-# Create your views here.
 from django_redis import get_redis_connection
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
@@ -42,15 +41,23 @@ class RegisterSMSCodeView(GenericAPIView):
 
     def get(self, request, mobile):
         print("验证中。。。")
+        # 获取序列化器, 验证数据
         ser = self.get_serializer(data=request.query_params)
         ser.is_valid(raise_exception=True)
+
+        # 连接redis, 判断是否为一个手机号频繁访问
         cur = get_redis_connection("code")
         if cur.get("is_re_%s" % mobile):
             return Response(status=status.HTTP_429_TOO_MANY_REQUESTS)
+
+        # 生成短信验证码
         import random
         sms_code = "%06d" % random.randint(0, 999999)
 
-        from celery_tasks.sms.tasks import send_sms_code
+        # 异步添加数据
+        from celery_tasks.sms.task_send_sms import send_sms_code
         send_sms_code.delay(mobile, sms_code)
+
+        # 向redis中添加该手机号确保恶意访问
         cur.setex("is_re_%s" % mobile, 60, 1)
         return JsonResponse({"status": 200})

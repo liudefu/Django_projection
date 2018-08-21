@@ -1,4 +1,11 @@
 # coding=utf-8
 
-broker_url = "redis://127.0.0.1/14"
-result_backend = "redis://127.0.0.1/15"
+BROKER_URL  = "redis://127.0.0.1/14"      # 任务队列
+CELERY_RESULT_BACKEND  = "redis://127.0.0.1/15"  # 结果队列
+
+
+CELERY_IMPORTS = (
+    "celery_tasks.sms.task_send_sms",
+)
+
+

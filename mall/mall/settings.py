@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# 配置apps站点管理
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,18 +43,22 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
 ]
 
+# 配置中间件
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+# 配置总路由所在位置
 ROOT_URLCONF = 'mall.urls'
 
+# 配置模版文件
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -75,6 +80,7 @@ WSGI_APPLICATION = 'mall.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# 配置mysql数据库
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
@@ -86,7 +92,7 @@ DATABASES = {
     }
 }
 
-
+# 配置redis
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -133,6 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
+# 配置本地化设置
 LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
@@ -146,7 +153,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+# 配置静态文件夹
 STATIC_URL = '/static/'
+
+
+# 配置日志
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -187,6 +198,8 @@ LOGGING = {
     }
 }
 
+
+# 配置rest
 REST_FRAMEWORK = {
     # 异常处理
     # 'DEFAULT_RENDERER_CLASSES': (  # 默认响应渲染类
@@ -197,5 +210,6 @@ REST_FRAMEWORK = {
 
 }
 
+# 调用继承admim中model的字段
 AUTH_USER_MODEL = "users.User"
 
