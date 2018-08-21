@@ -8,9 +8,6 @@ from users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # allow = serializers.CharField(allow_null=False,allow_blank=False,write_only=True)
-    # sms_code = serializers.CharField(max_length=6, min_length=6, allow_null=False,allow_blank=False,write_only=True)
-    # password2 = serializers.CharField(min_length=8, max_length=21, allow_null=True, write_only=True)
     allow = serializers.CharField(write_only=True)
     sms_code = serializers.CharField(max_length=6, min_length=6, write_only=True)
     password2 = serializers.CharField(min_length=8, max_length=21, write_only=True)
@@ -20,7 +17,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ("username", "password", "mobile",
                   "date_joined", "last_login", "password2",
                   "allow", "sms_code")
-        ex
 
     def validate(self, attrs):
         password1 = attrs.get("password")

@@ -23,11 +23,11 @@ class UserAPIView(APIView):
 class MobileAPIView(APIView):
     def get(self, request, mobile):
         mobile = User.objects.filter(mobile=mobile).count()
-        data = {
+        context = {
             "count":mobile,
             "mobile": mobile
         }
-        return Response(data=data)
+        return Response(data=context)
 
 class CreateUserAPIView(CreateAPIView):
     """验证并创建User用户信息"""

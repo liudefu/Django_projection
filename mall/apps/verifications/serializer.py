@@ -6,6 +6,7 @@ import logging
 from django_redis import get_redis_connection
 from redis.exceptions import RedisError
 from rest_framework import serializers
+from rest_framework.response import Response
 
 logger = logging.getLogger("running")
 
@@ -40,5 +41,5 @@ class RegisterSMSCodeSerializer(serializers.Serializer):
         if not image_code:
             raise RedisError("验证码已过期！")
         if image_code.decode().lower() != image_code_test.lower():
-            raise serializers.ValidationError("验证码错误！")
+            return Response("验证码错误！", status=400)
         return attr
