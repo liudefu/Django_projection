@@ -1,5 +1,5 @@
 # coding=utf-8
-from celery_tasks.main import app
+from celery_tasks.celery import app
 from libs.yuntongxun.sms import CCP
 
 

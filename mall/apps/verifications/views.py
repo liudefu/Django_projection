@@ -57,7 +57,13 @@ class RegisterSMSCodeView(GenericAPIView):
         # 异步添加数据
         from celery_tasks.sms.task_send_sms import send_sms_code
         send_sms_code.delay(mobile, sms_code)
+        print(sms_code)
+
+        # 存储短信验证码
+        cur.setex("sms_code_%s" % mobile, 5*60, sms_code)
 
         # 向redis中添加该手机号确保恶意访问
         cur.setex("is_re_%s" % mobile, 60, 1)
         return JsonResponse({"status": 200})
+
+
