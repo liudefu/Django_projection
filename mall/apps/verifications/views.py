@@ -16,9 +16,10 @@ class ImageCodeAPIView(APIView):
     # 2. 调用模块生成图片和验证码
     # 3. 调用redis储存验证码, 并设置有效期60s
     # 4. 返回给客户端Image, 注意设置格式content-type
-
-    def get(self, request, image_code_id):
+    @staticmethod
+    def get(request, image_code_id):
         text, image = captcha.captcha.generate_captcha()
+        print(request)
         print(text)
         cur = get_redis_connection("code")
 
@@ -30,8 +31,8 @@ class ImageCodeAPIView(APIView):
 # 1. 前端提供UUID, 手机号, 图片验证码
 # 2. 利用验证器验证UUID/手机号/图片验证码的合法性, 并验证图片验证码的正确性
 # 3. 验证该用户是否在频繁操作：
-    # 将手机号存入redis中, 生命周期是60s, 每次发送短信之前首先进行get
-    # 判断是否能get出来数据, 如果有说明频繁获取
+# 将手机号存入redis中, 生命周期是60s, 每次发送短信之前首先进行get
+# 判断是否能get出来数据, 如果有说明频繁获取
 # 4. 异步制作短信验证码
 # 5. 返回发送成功！
 
@@ -60,10 +61,8 @@ class RegisterSMSCodeView(GenericAPIView):
         print(sms_code)
 
         # 存储短信验证码
-        cur.setex("sms_code_%s" % mobile, 5*60, sms_code)
+        cur.setex("sms_code_%s" % mobile, 5 * 60, sms_code)
 
         # 向redis中添加该手机号确保恶意访问
         cur.setex("is_re_%s" % mobile, 60, 1)
         return JsonResponse({"status": 200})
-
-

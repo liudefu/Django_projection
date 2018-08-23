@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import datetime
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import sys
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     "users.apps.UsersConfig",
+    "oauth.apps.OauthConfig",
 ]
 
 # 配置中间件
@@ -217,8 +218,6 @@ REST_FRAMEWORK = {
 
 }
 
-import datetime
-
 JWT_AUTH = {
 
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
@@ -227,3 +226,7 @@ JWT_AUTH = {
 
 # 调用继承admim中model的字段
 AUTH_USER_MODEL = "users.User"
+
+AUTHENTICATION_BACKENDS = [
+    'utils.users_validate_login.UserValidateBackend',
+]
