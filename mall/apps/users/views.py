@@ -7,26 +7,28 @@ from users.serializer import UserSerializer
 from .models import User
 
 
-class UserAPIView(APIView):
-    def get(self, request, username):
-        user = User.objects.filter(username=username).count()
-        user_dict = {
-            "count": user,
-            "username": username
-        }
-        return Response(user_dict)
+class ValidateUser(object):
+    """User注册验证类"""
+    class UserNameValidate(APIView):
+        @staticmethod
+        def get(request, username):
+            user = User.objects.filter(username=username).count()
+            user_dict = {
+                "count": user,
+                "username": username
+            }
+            return Response(user_dict)
 
-
-class MobileAPIView(APIView):
-    """校验手机号"""
-
-    def get(self, request, mobile):
-        mobile = User.objects.filter(mobile=mobile).count()
-        context = {
-            "count": mobile,
-            "mobile": mobile
-        }
-        return Response(data=context)
+    class MobileValidate(APIView):
+        """校验手机号"""
+        @staticmethod
+        def get(request, mobile):
+            mobile = User.objects.filter(mobile=mobile).count()
+            context = {
+                "count": mobile,
+                "mobile": mobile
+            }
+            return Response(data=context)
 
 
 class CreateUserAPIView(CreateAPIView):

@@ -54,7 +54,7 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("请勾选用户协议！")
         cur = get_redis_connection("code")
         sms_code = cur.get("sms_code_%s" % mobile)
-        # cur.delete("sms_code_%s" % mobile)
+        cur.delete("sms_code_%s" % mobile)
         if not sms_code:
             raise serializers.ValidationError("验证码过期")
         if sms_code.decode() != sms_code_test:
