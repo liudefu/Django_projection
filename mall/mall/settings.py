@@ -27,7 +27,14 @@ SECRET_KEY = '-+(o1tlxpnp1tq+gmc8ek*h03y6$9shrt(b1m3usej5-vkzl&y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CORS_ORIGIN_WHITELIST = (
+    '127.0.0.1:8080',
+    'localhost:8080',
+    'www.meiduo.site:8080'
+)
+CORS_ALLOW_CREDENTIALS = True
+
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -40,20 +47,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     "users.apps.UsersConfig",
 ]
 
 # 配置中间件
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 # 配置总路由所在位置
 ROOT_URLCONF = 'mall.urls'
@@ -156,7 +164,6 @@ USE_TZ = True
 # 配置静态文件夹
 STATIC_URL = '/static/'
 
-
 # 配置日志
 LOGGING = {
     'version': 1,
@@ -198,18 +205,25 @@ LOGGING = {
     }
 }
 
-
 # 配置rest
 REST_FRAMEWORK = {
     # 异常处理
-    # 'DEFAULT_RENDERER_CLASSES': (  # 默认响应渲染类
-    #     'rest_framework.renderers.JSONRenderer',  # json渲染器
-    #     'rest_framework.renderers.BrowsableAPIRenderer',  # 浏览API渲染器
-    # ),
     'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
 
+}
+
+import datetime
+
+JWT_AUTH = {
+
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'utils.users_token.jwt_response_payload_handler',
 }
 
 # 调用继承admim中model的字段
 AUTH_USER_MODEL = "users.User"
-
