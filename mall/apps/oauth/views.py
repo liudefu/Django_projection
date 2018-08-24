@@ -1,8 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from contents.login.qq import *
-from oauth.utils import join_url, get_url_data
+from oauth.utils import link_tx
 
 
 class OauthQQView(APIView):
@@ -10,16 +9,9 @@ class OauthQQView(APIView):
 
     @staticmethod
     def get(request):
-        code_id = request.query_params.get("code")
-        params_dict = {
-            "response_type": "code",
-            "client_id": QQ_APP_ID,
-            "redirect_uri": QQ_REDIRECT_URL,
-            "state": code_id,
-            "scope": "get_user_info"
-        }
-        url = join_url(GET_CODE_ID_URL, params_dict)
-        return Response({"auth_url": url})
+        # 将qq的url发给用户, 实现三方登陆
+        url = link_tx.join_url("get_qq_code_id")
+        return link_tx.send_url(url)
 
 
 class OauthQQUserView(APIView):
@@ -27,26 +19,38 @@ class OauthQQUserView(APIView):
 
     @staticmethod
     def get(request):
-        code_id = request.query_params.get("code")
-        params_dict = {
-            "grant_type": "authorization_code",
-            "client_id": QQ_APP_ID,
-            "client_secret": QQ_APP_KEY,
-            "code": code_id,
-            "redirect_uri": QQ_REDIRECT_URL
-        }
+        # 1. 从客户端拿到code
+        code = request.query_params.get("code")
 
-        token_url = join_url(GET_TOKEN_URL, params_dict)
-        token_dict = get_url_data(token_url)
+        # 2. 利用code访问qq获取token
+        token_data = link_tx.get_url_data("get_qq_token", code)
+        # 'callback( {"client_id":"101474184","openid":"3FCC18185E46F988D464CF0AC5CB9676"} );
 
-        access_token = {
-            "access_token": token_dict.get("access_token")[0]
-        }
-        open_id_url = join_url(GET_OPEN_ID_URL, access_token)
+        # 3. 利用token访问qq获取open_id
+        open_id_data = link_tx.get_url_data("get_qq_open_id", token_data)
 
-        open_id_dict = get_url_data(open_id_url)
-        openid = open_id_dict.get("openid")
+        openid = open_id_data.get("openid")
         print(openid)
 
         return Response(openid)
-    # 'callback( {"client_id":"101474184","openid":"3FCC18185E46F988D464CF0AC5CB9676"} );
+
+
+class WeChatView(APIView):
+    """获取微信接口"""
+
+    @staticmethod
+    def get(request):
+        """拼接url发给客户端实现三方登陆"""
+        url = link_tx.join_url("get_wx_code_id")
+        return link_tx.send_url(url)
+
+
+class WeChatUserView(APIView):
+    """与微信服务器交互"""
+
+    @staticmethod
+    def get(request):
+        code = request.query_params.get("code")
+
+        get_token_url = link_tx.get_url_data("get_wx_token")
+        pass

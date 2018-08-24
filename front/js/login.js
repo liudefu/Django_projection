@@ -88,6 +88,19 @@ var vm = new Vue({
                 .catch(error => {
                     console.log(error.response.data);
                 })
+        },
+        // qq登录
+        wechat_login: function(){
+            var state = this.get_query_string('next') || '/';
+            axios.get(this.host + '/oauth/wechat/statues/?state=' + state, {
+                    responseType: 'json'
+                })
+                .then(response => {
+                    location.href = response.data.auth_url;
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                })
         }
     }
 });

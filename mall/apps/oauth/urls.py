@@ -5,5 +5,9 @@ from oauth.views import *
 
 urlpatterns = [
     url(r"^qq/statues/$", OauthQQView.as_view(), name="qq_statues"),
-    url(r"^qq/users/$", OauthQQUserView.as_view(), name="qq_user")
+    url(r"^qq/users/$", OauthQQUserView.as_view(), name="qq_user"),
+    url(r"^wechat/statues/$", WeChatView.as_view(), name="wechat_statues"),
+    url(r"^wechat/users/$", WeChatUserView.as_view(), name="wechat_user"),
 ]
+
+
