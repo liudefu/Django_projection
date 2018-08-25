@@ -8,10 +8,6 @@ from rest_framework.response import Response
 
 from contents.login.qq import *
 
-# link_tx = None
-
-print(33333)
-
 
 class LoginInteraction(object):
     """登陆三方数据交互"""
@@ -79,13 +75,20 @@ class LoginInteraction(object):
             param_dict["access_token"] = value.get("access_token")[0]
             self.base_url = GET_QQ_OPEN_ID_URL
 
+        elif key == "get_wx_code_id":
+            self.base_url = GET_WECHAT_CODE_ID_URL
+
+        elif key == "get_wx_token":
+            param_dict["code"] = value
+            self.base_url = GET_WECHAT_TOKEN_URL
+
         return param_dict
 
     get_qq_code_id = {
         "response_type": "code",
         "client_id": APP_ID,
         "redirect_uri": REDIRECT_URL,
-        "state": "test",
+        "state": "/",
         "scope": "get_user_info"
     }
 
@@ -103,13 +106,14 @@ class LoginInteraction(object):
         "redirect_uri": REDIRECT_URL,
         "response_type": "code",
         "scope": "snsapi_login",
-        "state": "test",
+        "state": "/",
     }
 
     get_wx_token = {
         "appid": APP_ID,
         "secret": APP_KEY,
         "grant_type": "authorization_code",
+        "redirect_uri": REDIRECT_URL
     }
 
     def __enter__(self):

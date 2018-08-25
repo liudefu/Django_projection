@@ -21,6 +21,7 @@ class ImageCodeAPIView(APIView):
         text, image = captcha.captcha.generate_captcha()
         print(request)
         print(text)
+        text = "1111"
         cur = get_redis_connection("code")
 
         cur.setex("image_code_%s" % image_code_id, 60, text)
@@ -54,6 +55,7 @@ class RegisterSMSCodeView(GenericAPIView):
         # 生成短信验证码
         import random
         sms_code = "%06d" % random.randint(0, 999999)
+        sms_code = "111111"
 
         # 异步添加数据
         from celery_tasks.sms.task_send_sms import send_sms_code

@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^phones/(?P<mobile>1[345789]\d{9})/count/$', ValidateUser.MobileValidate.as_view(), name='phone_count'),
     url(r"^$", CreateUserAPIView.as_view(), name="create_user"),
     url(r'auths/', obtain_jwt_token, name='auths'),
+    url(r'^infos/$', UserDetailView.as_view(), name='detail'),
 ]

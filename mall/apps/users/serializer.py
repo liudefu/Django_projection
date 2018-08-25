@@ -1,11 +1,11 @@
 # coding=utf-8
 import re
 
-from django_redis import get_redis_connection
 from rest_framework import serializers
-from rest_framework_jwt.settings import api_settings
 
 from users.models import User
+from utils.set_token import make_token
+from utils.validate_sms_code import validate_sms_code
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -18,7 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("username", "password", "mobile",
-                  "password2", "allow", "sms_code", "token", "id")
+                  "password2", "allow", "sms_code",
+                  "token", "id", "email_active")
         extra_kwargs = {
             "id": {"read_only": True},
             'username': {
@@ -46,19 +47,20 @@ class UserSerializer(serializers.ModelSerializer):
         mobile = attrs.get("mobile")
         allow = attrs.get("allow")
         sms_code_test = attrs.get("sms_code")
+
         if password1 != password2:
             raise serializers.ValidationError("两次输入密码不一致！")
+
         if not re.match(r"^1[356789]\d{9}$", mobile):
             raise serializers.ValidationError("手机号不合法！")
+
         if not allow:
             raise serializers.ValidationError("请勾选用户协议！")
-        cur = get_redis_connection("code")
-        sms_code = cur.get("sms_code_%s" % mobile)
-        cur.delete("sms_code_%s" % mobile)
-        if not sms_code:
-            raise serializers.ValidationError("验证码过期")
-        if sms_code.decode() != sms_code_test:
-            raise serializers.ValidationError("验证码输入错误！")
+
+        sms_validate = validate_sms_code(sms_code_test, mobile)
+        if sms_validate is not True:
+            raise serializers.ValidationError(sms_validate)
+
         return attrs
 
     def create(self, attrs):
@@ -72,11 +74,15 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(attrs["password"])
         user.save()
 
-        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
-        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
-
-        payload = jwt_payload_handler(user)
-        token = jwt_encode_handler(payload)
-        user.token = token
+        # 给user制作token, 并赋值
+        user.token = make_token(user)
 
         return user
+
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    """个人中心序列化器"""
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'mobile', 'email', 'email_active')

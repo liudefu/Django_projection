@@ -222,7 +222,7 @@ REST_FRAMEWORK = {
 JWT_AUTH = {
 
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'utils.users_token.jwt_response_payload_handler',
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'utils.make_jwt_response.jwt_response_payload_handler',
 }
 
 # 调用继承admim中model的字段
