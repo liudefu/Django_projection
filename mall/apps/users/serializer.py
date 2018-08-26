@@ -3,11 +3,14 @@ import re
 
 from rest_framework import serializers
 
+from celery_tasks.tasks.email_send import send_verify_email
 from users.models import User
-from utils.set_token import make_token
+from utils.token_JWT import make_token
+from utils.token_itsdangerous import token_encode
 from utils.validate_sms_code import validate_sms_code
 
 
+# noinspection SpellCheckingInspection
 class UserSerializer(serializers.ModelSerializer):
     """用户表单序列化器"""
     allow = serializers.CharField(write_only=True, allow_blank=True)
@@ -86,3 +89,25 @@ class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'mobile', 'email', 'email_active')
+
+
+class EmailSerializer(serializers.ModelSerializer):
+    """邮箱认证序列化器"""
+
+    class Meta:
+        model = User
+        fields = ["email", "id"]
+        extra_kwargs = {
+            "email": {
+                "required": True
+            }
+        }
+
+    def update(self, obj, data):
+        email = data.get("email")
+        obj.email = email
+        obj.save()
+        token = token_encode({"id": obj.id, "email": email})
+        send_verify_email.delay(email, token)
+        print("邮件发送成功!")
+        return obj

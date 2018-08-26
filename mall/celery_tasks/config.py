@@ -5,7 +5,8 @@ CELERY_RESULT_BACKEND  = "redis://127.0.0.1/15"  # 结果队列
 
 
 CELERY_IMPORTS = (
-    "celery_tasks.sms.task_send_sms",
+    "celery_tasks.tasks.sms_send",
+    "celery_tasks.tasks.email_send",
 )
 
 

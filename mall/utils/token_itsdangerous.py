@@ -8,24 +8,26 @@ from mall.settings import SECRET_KEY
 ser_openid = Ser(SECRET_KEY, expires_in=3600)
 
 
-def encode_open_id(openid):
+def token_encode(data_to_encode):
     """加密openid"""
 
     # 加密, 返回值为二进制, 需要解码
-    bytes_data = ser_openid.dumps({"openid": openid})
+    bytes_data = ser_openid.dumps(data_to_encode)
     data = bytes_data.decode()
 
     # 数据加密成token返回
     return data
 
 
-def decode_open_id(openid):
-    """解密openid"""
+def token_decode(data_to_decode):
+    """解密openid
+    :return 注意return dict
+    """
     try:
 
-        decode_openid = ser_openid.loads(openid).get("openid")
+        decode_data = ser_openid.loads(data_to_decode)
 
     except itsdangerous.BadData:
         return None
 
-    return decode_openid
+    return decode_data

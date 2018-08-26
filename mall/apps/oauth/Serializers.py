@@ -3,12 +3,13 @@ from rest_framework import serializers
 
 from oauth.models import OAuthQQUser
 from users.models import User
-from utils.open_id import decode_open_id
-from utils.serializer_token import to_serializer
-from utils.set_token import make_token
+from utils.token_itsdangerous import token_decode
+from utils.user_serializer import to_serializer
+from utils.token_JWT import make_token
 from utils.validate_sms_code import validate_sms_code
 
 
+# noinspection PyAbstractClass
 class OAuthUserSerializers(serializers.Serializer):
     """qq绑定序列化器"""
     mobile = serializers.RegexField(label="手机号", regex=r"^1[356789]\d{9}$", allow_null=False, required=True)
@@ -27,19 +28,19 @@ class OAuthUserSerializers(serializers.Serializer):
         if not all([openid, sms_code_test, mobile, password]):
             raise serializers.ValidationError("数据不全!")
 
-        openid = decode_open_id(openid)
+        openid = token_decode(openid).get("openid")
         if openid is None:
             raise serializers.ValidationError("token失效!")
         data["openid"] = openid
+        # 验证短信验证码
+        validate_sms = validate_sms_code(sms_code_test, mobile)
+        if validate_sms is not True:
+            raise serializers.ValidationError(validate_sms)
 
         try:
             user = User.objects.get(mobile=mobile)
             data["user"] = user
         except User.DoesNotExist:
-            # 验证短信验证码
-            validate_sms = validate_sms_code(sms_code_test, mobile)
-            if validate_sms is not True:
-                raise serializers.ValidationError(validate_sms)
             return data
         return data
 
@@ -65,6 +66,3 @@ class OAuthUserSerializers(serializers.Serializer):
         token = make_token(user)
         data = to_serializer(token, user)
         return data
-
-    def update(self, instance, data):
-        pass

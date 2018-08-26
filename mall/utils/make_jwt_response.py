@@ -1,5 +1,5 @@
 # coding=utf-8
-from utils.serializer_token import to_serializer
+from utils.user_serializer import to_serializer
 
 
 def jwt_response_payload_handler(token, user=None, request=None):

@@ -58,7 +58,7 @@ class RegisterSMSCodeView(GenericAPIView):
         sms_code = "111111"
 
         # 异步添加数据
-        from celery_tasks.sms.task_send_sms import send_sms_code
+        from celery_tasks.tasks.sms_send import send_sms_code
         send_sms_code.delay(mobile, sms_code)
         print(sms_code)
 

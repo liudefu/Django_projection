@@ -4,9 +4,9 @@ from rest_framework.views import APIView
 from oauth.Serializers import OAuthUserSerializers
 from oauth.models import OAuthQQUser
 from oauth.utils import link_tx
-from utils.open_id import encode_open_id
-from utils.serializer_token import to_serializer
-from utils.set_token import make_token
+from utils.token_itsdangerous import token_encode
+from utils.user_serializer import to_serializer
+from utils.token_JWT import make_token
 
 
 class QQRegisterView(APIView):
@@ -15,8 +15,8 @@ class QQRegisterView(APIView):
     # 2. 使用序列化器进行验证
     # 3. 将验证通过的data进行保存
     # 4. 将token发送给客户端实现登陆状态
-
-    def post(self, request):
+    @staticmethod
+    def post(request):
 
         serializer = OAuthUserSerializers(data=request.data)
         serializer.is_valid()
@@ -25,6 +25,7 @@ class QQRegisterView(APIView):
         return Response(data)
 
 
+# noinspection PyUnusedLocal
 class OauthQQView(APIView):
     """创建qq连接视图"""
 
@@ -62,7 +63,7 @@ class OauthQQUserView(APIView):
             user = user_openid.user
         except OAuthQQUser.DoesNotExist:
             # 加密open_id, 返回token, 进入注册页面
-            token = encode_open_id(openid)
+            token = token_encode({"openid": openid})
             return Response({"access_token": token})
 
         # 生成token
@@ -73,22 +74,22 @@ class OauthQQUserView(APIView):
         return Response(data)
 
 
-class WeChatView(APIView):
-    """获取微信接口"""
-
-    @staticmethod
-    def get(request):
-        """拼接url发给客户端实现三方登陆"""
-        url = link_tx.join_url("get_wx_code_id")
-        return link_tx.send_url(url)
-
-
-class WeChatUserView(APIView):
-    """与微信服务器交互"""
-
-    @staticmethod
-    def get(request):
-        code = request.query_params.get("code")
-
-        get_token_url = link_tx.get_url_data("get_wx_token")
-        pass
+# class WeChatView(APIView):
+#     """获取微信接口"""
+#
+#     @staticmethod
+#     def get(request):
+#         """拼接url发给客户端实现三方登陆"""
+#         url = link_tx.join_url("get_wx_code_id")
+#         return link_tx.send_url(url)
+#
+#
+# class WeChatUserView(APIView):
+#     """与微信服务器交互"""
+#
+#     @staticmethod
+#     def get(request):
+#         code = request.query_params.get("code")
+#
+#         get_token_url = link_tx.get_url_data("get_wx_token")
+#         pass

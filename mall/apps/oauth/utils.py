@@ -6,7 +6,7 @@ from urllib.request import urlopen
 
 from rest_framework.response import Response
 
-from contents.login.qq import *
+from contents.login.tencent import *
 
 
 class LoginInteraction(object):

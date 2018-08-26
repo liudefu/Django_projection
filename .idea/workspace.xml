@@ -2,21 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="894450f8-16bb-4bd3-8730-7f25ded49a6f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/js/oauth_callback.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/js/oauth_callback.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/user_center_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/user_center_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/js/user_center_info.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/js/user_center_info.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/apps/contents/login/qq.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/contents/login/tencent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/apps/oauth/Serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/oauth/Serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mall/apps/oauth/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/oauth/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mall/apps/oauth/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/oauth/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mall/apps/oauth/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/oauth/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall/apps/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/users/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mall/apps/users/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/users/serializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mall/apps/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mall/apps/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/users/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mall/apps/verifications/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/apps/verifications/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/celery_tasks/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/celery_tasks/celery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/celery_tasks/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/celery_tasks/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/celery_tasks/sms/task_send_sms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/celery_tasks/tasks/sms_send.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mall/mall/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/mall/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall/utils/users_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/utils/make_jwt_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/utils/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/utils/other_error_setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/utils/make_jwt_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/utils/make_jwt_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/utils/open_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/utils/token_itsdangerous.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/utils/serializer_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/utils/user_serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall/utils/set_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/mall/utils/token_JWT.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,7 +33,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Django_projection$serializer.coverage" NAME="serializer Coverage Results" MODIFIED="1534846268167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mall/apps/verifications" />
-    <SUITE FILE_PATH="coverage/Django_projection$manage.coverage" NAME="manage Coverage Results" MODIFIED="1535208167954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mall" />
+    <SUITE FILE_PATH="coverage/Django_projection$manage.coverage" NAME="manage Coverage Results" MODIFIED="1535277005634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mall" />
     <SUITE FILE_PATH="coverage/Django_projection$models.coverage" NAME="models Coverage Results" MODIFIED="1534664989818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mall/apps/users" />
     <SUITE FILE_PATH="coverage/Django_projection$captcha.coverage" NAME="captcha Coverage Results" MODIFIED="1534749730384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mall/libs/captcha/captcha" />
     <SUITE FILE_PATH="coverage/Django_projection$views.coverage" NAME="views Coverage Results" MODIFIED="1535018279310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mall/apps/oauth" />
@@ -37,47 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mall/apps/oauth/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="open_id.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall/utils/open_id.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-              <folding>
-                <element signature="e#15#78#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall/apps/users/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="29" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="serializer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mall/apps/users/serializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2322">
-              <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
+            <state relative-caret-position="256">
+              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -85,47 +55,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="token_itsdangerous.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall/utils/token_itsdangerous.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="21" column="16" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="16" />
+              <folding>
+                <element signature="e#15#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall/apps/users/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mall/apps/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1458">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="-377">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
               <folding>
-                <element signature="e#26#108#0" expanded="true" />
+                <element signature="e#26#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Serializers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall/apps/oauth/Serializers.py">
+      <file leaf-file-name="email.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mall/apps/contents/center/email.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-              <folding>
-                <element signature="e#15#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mall/apps/oauth/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_center_info.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/js/user_center_info.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1431">
-              <caret line="53" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="53" selection-end-column="5" />
+            <state relative-caret-position="-122">
+              <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -135,9 +102,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -160,10 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mall/mall/__init__.py" />
-        <option value="$PROJECT_DIR$/mall/utils/exceptions.py" />
-        <option value="$PROJECT_DIR$/front/js/axios-0.18.0.min.js" />
-        <option value="$PROJECT_DIR$/mall/apps/users/apps.py" />
         <option value="$PROJECT_DIR$/mall/apps/verifications/urls.py" />
         <option value="$PROJECT_DIR$/front/js/vue-2.5.16.js" />
         <option value="$PROJECT_DIR$/mall/celery_tasks/sms/tasks.py" />
@@ -172,7 +135,6 @@
         <option value="$PROJECT_DIR$/mall/celery_tasks/__init__.py" />
         <option value="$PROJECT_DIR$/mall/celery_tasks/main.py" />
         <option value="$PROJECT_DIR$/mall/celery_tasks/sms/xxx.py" />
-        <option value="$PROJECT_DIR$/mall/celery_tasks/config.py" />
         <option value="$PROJECT_DIR$/mall/apps/users/serializser.py" />
         <option value="$PROJECT_DIR$/mall/apps/verifications/serializer.py" />
         <option value="$PROJECT_DIR$/mall/utils/tools.py" />
@@ -187,28 +149,35 @@
         <option value="$PROJECT_DIR$/front/js/login.js" />
         <option value="$PROJECT_DIR$/mall/apps/contents/login/qq.py" />
         <option value="$PROJECT_DIR$/mall/utils/users_token.py" />
-        <option value="$PROJECT_DIR$/mall/mall/settings.py" />
         <option value="$PROJECT_DIR$/mall/utils/make_jwt_response.py" />
         <option value="$PROJECT_DIR$/mall/utils/validate_sms_code.py" />
         <option value="$PROJECT_DIR$/mall/utils/set_token.py" />
         <option value="$PROJECT_DIR$/mall/utils/code_id.py" />
-        <option value="$PROJECT_DIR$/mall/apps/oauth/urls.py" />
         <option value="$PROJECT_DIR$/front/js/oauth_callback.js" />
         <option value="$PROJECT_DIR$/mall/apps/oauth/utils.py" />
-        <option value="$PROJECT_DIR$/mall/apps/oauth/models.py" />
-        <option value="$PROJECT_DIR$/mall/utils/serializer_token.py" />
-        <option value="$PROJECT_DIR$/mall/utils/open_id.py" />
-        <option value="$PROJECT_DIR$/mall/apps/oauth/Serializers.py" />
         <option value="$PROJECT_DIR$/mall/apps/verifications/views.py" />
-        <option value="$PROJECT_DIR$/mall/apps/users/models.py" />
-        <option value="$PROJECT_DIR$/mall/apps/users/serializer.py" />
-        <option value="$PROJECT_DIR$/mall/apps/users/urls.py" />
         <option value="$PROJECT_DIR$/front/detail.html" />
-        <option value="$PROJECT_DIR$/front/js/user_center_info.js" />
         <option value="$PROJECT_DIR$/front/user_center_info.html" />
         <option value="$PROJECT_DIR$/front/index.html" />
-        <option value="$PROJECT_DIR$/mall/apps/users/views.py" />
+        <option value="$PROJECT_DIR$/mall/apps/oauth/models.py" />
+        <option value="$PROJECT_DIR$/mall/apps/oauth/urls.py" />
+        <option value="$PROJECT_DIR$/mall/utils/open_id.py" />
+        <option value="$PROJECT_DIR$/mall/utils/serializer_token.py" />
+        <option value="$PROJECT_DIR$/mall/apps/oauth/Serializers.py" />
         <option value="$PROJECT_DIR$/mall/apps/oauth/views.py" />
+        <option value="$PROJECT_DIR$/mall/utils/token_itsdangerous.py" />
+        <option value="$PROJECT_DIR$/mall/utils/validate_email_verify.py" />
+        <option value="$PROJECT_DIR$/mall/celery_tasks/celery.py" />
+        <option value="$PROJECT_DIR$/mall/celery_tasks/config.py" />
+        <option value="$PROJECT_DIR$/mall/apps/users/models.py" />
+        <option value="$PROJECT_DIR$/front/js/user_center_info.js" />
+        <option value="$PROJECT_DIR$/mall/mall/settings.py" />
+        <option value="$PROJECT_DIR$/mall/apps/contents/center/email.py" />
+        <option value="$PROJECT_DIR$/mall/apps/users/serializer.py" />
+        <option value="$PROJECT_DIR$/mall/celery_tasks/tasks/email_send.py" />
+        <option value="$PROJECT_DIR$/front/success_verify_email.html" />
+        <option value="$PROJECT_DIR$/mall/apps/users/urls.py" />
+        <option value="$PROJECT_DIR$/mall/apps/users/views.py" />
       </list>
     </option>
   </component>
@@ -241,7 +210,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -265,12 +233,32 @@
               <item name="Django_projection" type="462c0819:PsiDirectoryNode" />
               <item name="mall" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="oauth" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Django_projection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Django_projection" type="462c0819:PsiDirectoryNode" />
+              <item name="mall" type="462c0819:PsiDirectoryNode" />
+              <item name="celery_tasks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Django_projection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Django_projection" type="462c0819:PsiDirectoryNode" />
+              <item name="mall" type="462c0819:PsiDirectoryNode" />
+              <item name="celery_tasks" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Django_projection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Django_projection" type="462c0819:PsiDirectoryNode" />
+              <item name="mall" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -447,30 +435,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-4" width="1916" height="830" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="-11" width="1918" height="838" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32733813" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5769231" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32905984" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32905984" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.6125356" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49786323" visible="true" weight="0.15688367" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.40028694" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.6111111" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49786323" visible="true" weight="0.1456777" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.33572453" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.24358974" />
       <window_info id="Favorites" order="2" sideWeight="0.50213677" side_tool="true" weight="0.15528281" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.44444445" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +478,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="136" />
+      <option name="time" value="146" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -539,125 +526,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mall/apps/orders/views.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/oauth_callback.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="75" column="51" selection-start-line="75" selection-start-column="51" selection-end-line="75" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/utils/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/utils/users_validate_login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/utils/tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/apps/verifications/serializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/celery_tasks/sms/task_send_sms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/itsdangerous.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="352" column="33" selection-start-line="352" selection-start-column="23" selection-end-line="352" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/register.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/apps/oauth/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="757">
-          <caret line="90" column="19" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
-          <folding>
-            <element signature="e#15#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework_jwt/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="60" column="27" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/utils/make_jwt_response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/utils/validate_sms_code.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/generics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="185" column="30" lean-forward="true" selection-start-line="185" selection-start-column="30" selection-end-line="185" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/mixins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/oauth_callback.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="180" column="24" selection-start-line="180" selection-start-column="24" selection-end-line="183" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/apps/oauth/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python3.5/threading.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -738,38 +606,10 @@
     <entry file="file://$PROJECT_DIR$/mall/apps/oauth/admin.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="213" selection-start-line="213" selection-end-line="213" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mall/apps/verifications/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/utils/serializer_token.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="479" selection-start-line="479" selection-end-line="479" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/apps/users/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="62" lean-forward="true" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -787,16 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall/mall/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="216" column="44" lean-forward="true" selection-start-line="216" selection-start-column="44" selection-end-line="216" selection-end-column="44" />
-          <folding>
-            <element signature="e#309#324#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -810,13 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/user_center_info.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1431">
-          <caret line="53" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="53" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/js/slide.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -824,13 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/utils/set_token.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -847,72 +663,260 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mall/apps/users/serializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2322">
-          <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/apps/users/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="29" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/apps/users/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1458">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#26#108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall/utils/open_id.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#15#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mall/apps/oauth/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="405">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mall/apps/oauth/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/apps/oauth/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="995">
+          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+          <folding>
+            <element signature="e#15#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/utils/other_error_setting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-243" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/utils/user_serializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/utils/token_JWT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mall/apps/oauth/Serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+        <state relative-caret-position="-450">
+          <caret line="34" column="17" lean-forward="true" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
           <folding>
             <element signature="e#15#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mall/utils/users_validate_login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mall/apps/oauth/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="297">
+          <caret line="68" column="17" lean-forward="true" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/utils/validate_email_verify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/django/core/mail/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/celery_tasks/tasks/sms_send.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#15#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/utils/validate_sms_code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/js/user_center_info.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/mall/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding>
+            <element signature="e#309#324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/apps/users/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/generics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="221" column="6" selection-start-line="221" selection-start-column="6" selection-end-line="221" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/utils/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="222" selection-start-line="222" selection-end-line="222" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/mixins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/celery_tasks/celery.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/celery_tasks/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-348">
+          <caret line="208" selection-start-line="208" selection-end-line="208" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/celery_tasks/tasks/email_send.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="35" lean-forward="true" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/success_verify_email.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="43" column="49" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="64" />
+          <folding>
+            <element signature="e#743#749#0" expanded="true" />
+            <element signature="e#749#755#0" expanded="true" />
+            <element signature="e#755#761#0" expanded="true" />
+            <element signature="e#761#767#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/django_py3/lib/python3.5/site-packages/rest_framework/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="479" selection-start-line="479" selection-end-line="479" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/utils/token_itsdangerous.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="16" />
+          <folding>
+            <element signature="e#15#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/apps/users/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/apps/users/serializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/apps/contents/center/email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-122">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall/apps/users/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-377">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="e#26#59#0" expanded="true" />
           </folding>
         </state>
       </provider>

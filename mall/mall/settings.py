@@ -15,6 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import sys
 
+from apps.contents.center.email import *
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR + "/apps")
 
@@ -210,7 +212,7 @@ LOGGING = {
 # 配置rest
 REST_FRAMEWORK = {
     # 异常处理
-    'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
+    'EXCEPTION_HANDLER': 'utils.other_error_setting.exception_handler',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
