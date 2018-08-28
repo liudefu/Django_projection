@@ -13,7 +13,6 @@ class UserValidateBackend(ModelBackend):
         # 1 判断是手机号还是用户名登陆
         login_name = self.get_name(username)
         # 2 校验密码
-        print(type(login_name))
         if login_name is not None and login_name.check_password(password):
             return login_name
         return None

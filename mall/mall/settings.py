@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "oauth.apps.OauthConfig",
     "areas.apps.AreasConfig",
+    "content.apps.ContentConfig",
+    "goods.apps.GoodsConfig",
 ]
 
 # 配置中间件
@@ -234,3 +236,10 @@ AUTH_USER_MODEL = "users.User"
 AUTHENTICATION_BACKENDS = [
     'utils.users_validate_login.UserValidateBackend',
 ]
+
+REST_FRAMEWORK_EXTENSIONS = {
+    # 缓存时间
+    "DEFAULT_CACHE_RESPONSE_TIMEOUT": 60 * 60,
+    # 缓存存储
+    "DEFAULT_USE_CACHE": "default",
+}

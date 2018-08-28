@@ -13,6 +13,7 @@
         <list>
           <option value="oauth.models.OAuthQQUser.objects" />
           <option value="oauth.models.OAuthQQUser.DoesNotExist" />
+          <option value="content.models.SKU.id" />
         </list>
       </option>
     </inspection_tool>

@@ -1,15 +1,13 @@
-# Create your views here.
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from areas.models import Areas
 from areas.serializer import AreasSerializer, SubsSerializer
+from rest_framework_extensions.cache.mixins import CacheResponseMixin
 
 
 # noinspection PyUnresolvedReferences
-class AreasViewSet(ReadOnlyModelViewSet):
+class AreasViewSet(CacheResponseMixin, ReadOnlyModelViewSet):
     """序列化市区县"""
-    # permission_classes = [IsAuthenticated]
     pagination_class = None
 
     def get_queryset(self):

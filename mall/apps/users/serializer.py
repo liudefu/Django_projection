@@ -70,11 +70,10 @@ class UserSerializer(serializers.ModelSerializer):
         attrs.pop("password2")
         attrs.pop("allow")
         attrs.pop("sms_code")
+        print(attrs.get("password"))
 
-        # attrs["password"] = "pbkdf2_sha256$36000$" + sha256(attrs["password"].encode()).hexdigest() + "="
+        user = User().ser_dict(attrs)
 
-        user = super().create(attrs)
-        user.set_password(attrs["password"])
         user.save()
 
         # 给user制作token, 并赋值
