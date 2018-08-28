@@ -104,10 +104,13 @@ class EmailSerializer(serializers.ModelSerializer):
         }
 
     def update(self, obj, data):
-        email = data.get("email")
-        obj.email = email
-        obj.save()
+        email = obj.email
+        if email is None:
+            email = data.get("email")
+            obj.email = email
+            obj.save()
+            print("用户邮箱绑定成功!")
         token = token_encode({"id": obj.id, "email": email})
         send_verify_email.delay(email, token)
-        print("邮件发送成功!")
+        print("激活邮件发送成功!")
         return obj

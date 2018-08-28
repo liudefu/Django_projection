@@ -12,3 +12,21 @@ class User(AbstractUser):
         db_table = "tb_users"
         verbose_name = "用户"
         verbose_name_plural = verbose_name
+
+
+# class Test(AbstractUser):
+#     """测试"""
+#     _password = models.CharField('password', max_length=30)
+#
+#     class Meta:
+#         db_table = "tb_test"
+#         verbose_name = "test"
+#         verbose_name_plural = verbose_name
+#
+#     @property
+#     def password(self):
+#         return self._password
+#
+#     @password.setter
+#     def password(self, password_input):
+#         self._password = self.set_password(password_input)

@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'corsheaders',
     "users.apps.UsersConfig",
     "oauth.apps.OauthConfig",
+    "areas.apps.AreasConfig",
 ]
 
 # 配置中间件

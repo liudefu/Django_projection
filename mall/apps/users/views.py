@@ -99,4 +99,5 @@ class VerificationEmailView(APIView):
 
         user.email_active = True
         user.save()
+        print("用户邮箱激活成功!")
         return Response({"message": "ok!"})

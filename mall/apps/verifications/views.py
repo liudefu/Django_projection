@@ -42,7 +42,6 @@ class RegisterSMSCodeView(GenericAPIView):
     serializer_class = RegisterSMSCodeSerializer
 
     def get(self, request, mobile):
-        print("验证中。。。")
         # 获取序列化器, 验证数据
         ser = self.get_serializer(data=request.query_params)
         ser.is_valid(raise_exception=True)
