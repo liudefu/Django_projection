@@ -1,8 +1,10 @@
 # coding=utf-8
 from django.conf.urls import url
+from rest_framework.routers import DefaultRouter
 from rest_framework_jwt.views import obtain_jwt_token
 
 from users.views import *
+
 
 urlpatterns = [
     url(r"^usernames/(?P<username>\w{5,20})/count/$", ValidateUser.UserNameValidate.as_view(), name="username"),
@@ -13,3 +15,10 @@ urlpatterns = [
     url(r'^emails/$',EmailView.as_view(),name='send_mail'),
     url(r'^emails/verification/$',VerificationEmailView.as_view(),name='emails_verification'),
 ]
+
+
+from users.views import AddressViewSet
+from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
+router.register(r'addresses',AddressViewSet,base_name='address')
+urlpatterns += router.urls

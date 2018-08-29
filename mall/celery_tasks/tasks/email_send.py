@@ -17,5 +17,6 @@ def send_verify_email(user_email, token):
               "<p>您的邮箱为：%s 。请点击此链接激活您的邮箱：</p>" \
               "<p><a href='%s'>%s<a></p>" % (user_email, token, verify_url)
     #                普通消息                         这里使用html消息
+    print(user_email)
     send_mail(subject, "", EMAIL_FROM, [user_email], html_message=message)
     return "激活邮件发送成功!"

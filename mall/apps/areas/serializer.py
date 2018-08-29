@@ -5,6 +5,9 @@ from areas.models import Areas
 
 
 # noinspection PyAbstractClass
+from users.models import Address
+
+
 class AreasSerializer(serializers.ModelSerializer):
     """省序列化器"""
 
@@ -21,3 +24,11 @@ class SubsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Areas
         fields = ["id", "name", "areas"]
+
+class AddressTitleSerializer(serializers.ModelSerializer):
+    """
+    地址标题
+    """
+    class Meta:
+        model = Address
+        fields = ('title',)

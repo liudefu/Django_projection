@@ -4,7 +4,7 @@ import re
 from rest_framework import serializers
 
 from celery_tasks.tasks.email_send import send_verify_email
-from users.models import User
+from users.models import User, Address
 from utils.token_JWT import make_token
 from utils.token_itsdangerous import token_encode
 from utils.validate_sms_code import validate_sms_code
@@ -104,12 +104,35 @@ class EmailSerializer(serializers.ModelSerializer):
 
     def update(self, obj, data):
         email = obj.email
-        if email is None:
+        if not email:
             email = data.get("email")
             obj.email = email
             obj.save()
             print("用户邮箱绑定成功!")
         token = token_encode({"id": obj.id, "email": email})
         send_verify_email.delay(email, token)
-        print("激活邮件发送成功!")
+        print("激活邮件发送成功!", email)
         return obj
+
+
+class AddressSerializer(serializers.ModelSerializer):
+    """收货地址"""
+    province = serializers.StringRelatedField(read_only=True)
+    city = serializers.StringRelatedField(read_only=True)
+    district = serializers.StringRelatedField(read_only=True)
+    province_id = serializers.IntegerField(label='省ID', required=True)
+    city_id = serializers.IntegerField(label='市ID', required=True)
+    district_id = serializers.IntegerField(label='区ID', required=True)
+    mobile = serializers.RegexField(label='手机号', regex=r'^1[3-9]\d{9}$')
+
+    class Meta:
+        model = Address
+        exclude = ('user', 'is_deleted', 'create_time', 'update_time')
+
+    def create(self, validate_data):
+        """创建收货地址"""
+        # 从context中获取request.user
+        user = self.context.get("request").user
+        # 将user添加到验证后的数据中, 绑定外键
+        validate_data["user"] = user
+        return super().create(validate_data)
