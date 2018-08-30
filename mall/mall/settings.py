@@ -15,8 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import sys
 
-from apps.contents.center.email import *
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR + "/apps")
 
@@ -55,6 +53,8 @@ INSTALLED_APPS = [
     "areas.apps.AreasConfig",
     "content.apps.ContentConfig",
     "goods.apps.GoodsConfig",
+    'ckeditor',  # 富文本编辑器
+    'ckeditor_uploader',  # 富文本编辑器上传图片模块
 ]
 
 # 配置中间件
@@ -242,3 +242,16 @@ REST_FRAMEWORK_EXTENSIONS = {
     # 缓存存储
     "DEFAULT_USE_CACHE": "default",
 }
+
+# 导入storage
+DEFAULT_FILE_STORAGE = 'utils.fastdfs.fdfsstorage.ClientStorage'
+
+# 富文本编辑器ckeditor配置
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  # 工具条功能
+        'height': 300,  # 编辑器高度
+        # 'width': 300,  # 编辑器宽
+    },
+}
+CKEDITOR_UPLOAD_PATH = ''  # 上传图片保存路径，使用了FastDFS，所以此处设为''
