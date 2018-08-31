@@ -10,7 +10,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST = "smtp.qq.com"
 
 # 发送邮件服务器端口
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 
 # 发送人邮箱
 EMAIL_HOST_USER = "hpcm@foxmail.com"

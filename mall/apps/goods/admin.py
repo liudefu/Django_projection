@@ -1,5 +1,48 @@
 from django.contrib import admin
+
+# Register your models here.
+
 from . import models
+
+
+class SKUAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        from celery_tasks.tasks.html_reader import reader_index_template
+        reader_index_template.delay(obj.id)
+
+
+class SKUSpecificationAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        from celery_tasks.tasks.html_reader import reader_index_template
+        reader_index_template.delay(obj.sku.id)
+
+    def delete_model(self, request, obj):
+        sku_id = obj.sku.id
+        obj.delete()
+        from celery_tasks.tasks.html_reader import reader_index_template
+        reader_index_template.delay(sku_id)
+
+
+class SKUImageAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        from celery_tasks.tasks.html_reader import reader_index_template
+        reader_index_template.delay(obj.sku.id)
+
+        # 设置SKU默认图片
+        sku = obj.sku
+        if not sku.default_image_url:
+            sku.default_image_url = obj.image.url
+            sku.save()
+
+    def delete_model(self, request, obj):
+        sku_id = obj.sku.id
+        obj.delete()
+        from celery_tasks.tasks.html_reader import reader_index_template
+        reader_index_template.delay(sku_id)
+
 
 admin.site.register(models.GoodsCategory)
 admin.site.register(models.GoodsChannel)
