@@ -48,24 +48,6 @@ def reader_index_template(sku_id):
         spec_sku_map[tuple(key)] = s.id
 
     # 获取当前商品的规格信息
-    # specs = [
-    #    {
-    #        'name': '屏幕尺寸',
-    #        'options': [
-    #            {'value': '13.3寸', 'sku_id': xxx},
-    #            {'value': '15.4寸', 'sku_id': xxx},
-    #        ]
-    #    },
-    #    {
-    #        'name': '颜色',
-    #        'options': [
-    #            {'value': '银色', 'sku_id': xxx},
-    #            {'value': '黑色', 'sku_id': xxx}
-    #        ]
-    #    },
-    #    ...
-    # ]
-
     specs = goods.goodsspecification_set.order_by('id')
     # 若当前sku的规格信息不完整,则不再继续
     if len(sku_key) < len(specs):
@@ -95,5 +77,25 @@ def reader_index_template(sku_id):
     template = loader.get_template('detail.html')
     html_text = template.render(context)
     file_path = os.path.join(GENERATED_STATIC_HTML_FILES_DIR, 'goods/' + str(sku_id) + '.html')
+    with open(file_path, 'w') as f:
+        f.write(html_text)
+
+
+@app.task(name='静态化商品列表')
+def generate_static_list_search_html():
+    """
+    生成静态的商品列表页html文件
+    """
+    # 商品分类菜单
+    categories = get_categories()
+
+    # 渲染模板，生成静态html文件
+    context = {
+        'categories': categories,
+    }
+
+    template = loader.get_template('list.html')
+    html_text = template.render(context)
+    file_path = os.path.join(GENERATED_STATIC_HTML_FILES_DIR, 'list.html')
     with open(file_path, 'w') as f:
         f.write(html_text)

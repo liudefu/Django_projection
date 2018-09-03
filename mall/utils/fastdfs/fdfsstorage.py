@@ -20,7 +20,7 @@ class ClientStorage(Storage):
         client = Fdfs_client(self.conf_path)
         data_byte = content.read()
         result = client.upload_by_buffer(data_byte)
-        if result.get("Status") == "Unload successed.":
+        if result.get("Status") == "Upload successed.":
             return result.get("Remote file_id")
         return Exception("上传失败!")
 

@@ -1,12 +1,18 @@
 # Create your views here.
+from collections import OrderedDict
+
 from django.shortcuts import render
 from django.views import View
 
 from rest_framework.response import Response
 
+from content.models import ContentCategory
+from goods.serializer import SKUSerializer, SKUIndexSerializer
+
 
 class CategoryView(View):
     """获取首页分类数据"""
+
     def get(self, request):
         # 1. 验证
         # 2. 获取
@@ -63,3 +69,54 @@ class CategoryView(View):
                 return render(request, 'home.html', context)
 
 
+from rest_framework_extensions.cache.mixins import ListCacheResponseMixin
+from rest_framework.generics import ListAPIView
+from goods.models import SKU, GoodsChannel
+
+
+# Create your views here.
+class HotSKUListView(ListCacheResponseMixin, ListAPIView):
+    """
+    获取热销商品
+    GET /goods/categories/(?P<category_id>\d+)/hotskus/
+    """
+    serializer_class = SKUSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        category_id = self.kwargs['category_id']
+        return SKU.objects.filter(category_id=category_id, is_launched=True).order_by('-sales')[:2]
+
+
+from rest_framework.generics import ListAPIView
+from goods.models import SKU
+from rest_framework.filters import OrderingFilter
+
+
+# Create your views here.
+class SKUListView(ListAPIView):
+    """
+    商品列表数据
+    GET /goods/categories/(?P<category_id>\d+)/skus/?page=xxx&page_size=xxx&ordering=xxx
+    """
+
+    serializer_class = SKUSerializer
+    # 通过定义过滤后端 ，来实行排序行为
+    filter_backends = [OrderingFilter]
+    ordering_fields = ('create_time', 'price', 'sales')
+
+    def get_queryset(self):
+        categroy_id = self.kwargs.get("category_id")
+        return SKU.objects.filter(category_id=categroy_id, is_launched=True)
+
+
+from drf_haystack.viewsets import HaystackViewSet
+
+
+class SKUSearchViewSet(HaystackViewSet):
+    """
+    SKU搜索
+    """
+    index_models = [SKU]
+
+    serializer_class = SKUIndexSerializer

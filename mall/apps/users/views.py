@@ -1,14 +1,20 @@
 # Create your views here.
+from django_redis import get_redis_connection
 from rest_framework import status, mixins
 from rest_framework.decorators import action
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView, GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
+from rest_framework_jwt.views import ObtainJSONWebToken
 
 from areas.serializer import AddressTitleSerializer
-from users.serializer import UserSerializer, UserDetailSerializer, EmailSerializer, AddressSerializer
+from cart.utils import merge_cart_to_redis
+from goods.models import SKU
+from goods.serializer import SKUSerializer
+from users.serializer import UserSerializer, UserDetailSerializer, EmailSerializer, AddressSerializer, \
+    AddUserBrowsingHistorySerializer
 from utils.token_itsdangerous import token_decode
 from verifications import serializer
 from .models import User
@@ -179,3 +185,66 @@ class AddressViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Upda
         request.user.default_address = address
         request.user.save()
         return Response({'message': 'OK'}, status=status.HTTP_200_OK)
+
+
+# noinspection PyArgumentList,PyUnresolvedReferences
+class UserBrowsingHistoryView(mixins.CreateModelMixin, GenericAPIView):
+    """
+    用户浏览历史记录
+    POST /users/browerhistories/
+    GET  /users/browerhistories/
+    数据只需要保存到redis中
+    """
+    serializer_class = AddUserBrowsingHistorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        """保存"""
+        return self.create(request)
+
+    def get(self, request):
+        """获取"""
+        # 获取用户信息
+        user_id = request.user.id
+        # 连接redis
+        redis_conn = get_redis_connection('history')
+        # 获取数据
+        history_sku_ids = redis_conn.lrange('history_%s' % user_id, 0, 5)
+        skus = []
+        for sku_id in history_sku_ids:
+            sku = SKU.objects.get(pk=sku_id)
+            skus.append(sku)
+        # 序列化
+        serializer = SKUSerializer(skus, many=True)
+        return Response(serializer.data, safe=False)
+
+
+from rest_framework.generics import ListAPIView
+from goods.models import SKU
+
+
+# noinspection PyUnresolvedReferences
+class HotSKUListView(ListAPIView):
+    """
+    获取热销商品
+    GET /goods/categories/(?P<category_id>\d+)/hotskus/
+    """
+    serializer_class = SKUSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        category_id = self.kwargs['category_id']
+        return SKU.objects.filter(category_id=category_id,is_launched=True).order_by('-sales')[:2]
+
+
+# noinspection PyMethodOverriding
+class UserAuthorizationView(ObtainJSONWebToken):
+    """重写post进行登陆后的购物车合并"""
+    def post(self, request):
+        response = super().post(request)
+        # return response
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            """用户登陆成功"""
+            user = serializer.object.get('user') or request.user
+            return merge_cart_to_redis(request, user, response)

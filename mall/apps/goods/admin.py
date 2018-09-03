@@ -43,13 +43,31 @@ class SKUImageAdmin(admin.ModelAdmin):
         from celery_tasks.tasks.html_reader import reader_index_template
         reader_index_template.delay(sku_id)
 
+from django.contrib import admin
+from . import models
 
-admin.site.register(models.GoodsCategory)
+# Register your models here.
+from celery_tasks.tasks.html_reader import generate_static_list_search_html
+
+class GoodsCategoryAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        obj.save()
+
+        generate_static_list_search_html.delay()
+
+    def delete_model(self, request, obj):
+        sku_id = obj.sku.id
+        obj.delete()
+        generate_static_list_search_html.delay()
+
+admin.site.register(models.GoodsCategory,GoodsCategoryAdmin)
+
+
 admin.site.register(models.GoodsChannel)
 admin.site.register(models.Goods)
 admin.site.register(models.Brand)
 admin.site.register(models.GoodsSpecification)
 admin.site.register(models.SpecificationOption)
-admin.site.register(models.SKU)
-admin.site.register(models.SKUSpecification)
-admin.site.register(models.SKUImage)
+admin.site.register(models.SKU, SKUAdmin)
+admin.site.register(models.SKUSpecification, SKUSpecificationAdmin)
+admin.site.register(models.SKUImage, SKUImageAdmin)
