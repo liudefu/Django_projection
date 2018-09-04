@@ -31,13 +31,16 @@ def merge_cart_to_redis(request, user, response):
     #                         if selected_count_dict["selected"] and
     #                         not setattr(cart, "sku_id", selected_count_dict["count"])]
     # 6. 将整理后的数据合并得到购物车中
+    if not all([cart, selected_sku_id_list]):
+        # 如果没有选中的话, 就直接返回
+        return response
     p1 = cur.pipeline()
     p1.hmset("cart_%s" % user.id, cart)
     # 注意拆包添加到redis中
     p1.sadd("cart_selected_%s" % user.id, *selected_sku_id_list)
     p1.execute()
     # 7. 清空cookie数据
-    # response.delete_cookie("cart")
+    response.delete_cookie("cart")
     return response
 
 

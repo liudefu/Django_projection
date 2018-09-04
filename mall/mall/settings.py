@@ -16,8 +16,11 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import sys
 
+from apps.contents.global_setting.set_global import *
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR + "/apps")
+from utils.fastdfs.client import *
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -26,7 +29,7 @@ sys.path.append(BASE_DIR + "/apps")
 SECRET_KEY = '-+(o1tlxpnp1tq+gmc8ek*h03y6$9shrt(b1m3usej5-vkzl&y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = LOCAL_DEBUG
 
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
@@ -291,7 +294,7 @@ CRONTAB_COMMAND_PREFIX = 'LANG_ALL=zh_cn.UTF-8'
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://10.254.1.55:9200/',  # 此处为elasticsearch运行的服务器ip地址，端口号固定为9200
+        'URL': 'http://%s:9200/' % LOCAL_IP,  # 此处为elasticsearch运行的服务器ip地址，端口号固定为9200
         'INDEX_NAME': 'meiduo',  # 指定elasticsearch建立的索引库的名称
     },
 }
