@@ -21,7 +21,7 @@ var vm = new Vue({
     mounted: function(){
         this.order_id = this.get_query_string('order_id');
         this.amount = this.get_query_string('amount');
-        this.pay_method = this.get_query_string('pay');
+        this.pay_method = this.get_query_string('payment');
     },
     methods: {
         // 退出
@@ -39,13 +39,25 @@ var vm = new Vue({
             }
             return null;
         },
-        next_operate: function(){
+               next_operate: function(){
             if (this.pay_method == 1) {
                 location.href = '/index.html';
             } else {
                 // 发起支付
-
+                axios.get(this.host+'/payment/orders/'+this.order_id+'/', {
+                        headers: {
+                            'Authorization': 'JWT ' + this.token
+                        },
+                        responseType: 'json'
+                    })
+                    .then(response => {
+                        location.href = response.data.alipay_url;
+                    })
+                    .catch(error => {
+                        console.log(error.response.data);
+                    })
             }
         }
+
     }
 });

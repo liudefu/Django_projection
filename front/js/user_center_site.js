@@ -30,6 +30,28 @@ var vm = new Vue({
         is_set_title: [],
         input_title: ''
     },
+    created: function(){
+
+        axios.get(this.host + '/users/addresses/', {
+                headers: {
+                    'Authorization': 'JWT ' + this.token
+                },
+                responseType: 'json'
+            })
+            .then(response => {
+                this.addresses = response.data.addresses;
+                this.limit = response.data.limit;
+                this.default_address_id = response.data.default_address_id;
+            })
+            .catch(error => {
+                status = error.response.status;
+                if (status == 401 || status == 403) {
+                    location.href = 'login.html?next=/user_center_site.html';
+                } else {
+                    alert(error.response.data.detail);
+                }
+            })
+    },
     mounted: function(){
         axios.get(this.host + '/areas/infos/', {
                 responseType: 'json'
@@ -48,7 +70,7 @@ var vm = new Vue({
                         responseType: 'json'
                     })
                     .then(response => {
-                        this.cities = response.data.areas;
+                        this.cities = response.data.subs;
                     })
                     .catch(error => {
                         console.log(error.response.data);
@@ -62,7 +84,7 @@ var vm = new Vue({
                         responseType: 'json'
                     })
                     .then(response => {
-                        this.districts = response.data.areas;
+                        this.districts = response.data.subs;
                     })
                     .catch(error => {
                         console.log(error.response.data);
@@ -179,28 +201,6 @@ var vm = new Vue({
                 }
             }
         },
-        created: function(){
-
-        axios.get(this.host + '/users/addresses/', {
-                headers: {
-                    'Authorization': 'JWT ' + this.token
-                },
-                responseType: 'json'
-            })
-            .then(response => {
-                this.addresses = response.data.addresses;
-                this.limit = response.data.limit;
-                this.default_address_id = response.data.default_address_id;
-            })
-            .catch(error => {
-                status = error.response.status;
-                if (status == 401 || status == 403) {
-                    location.href = 'login.html?next=/user_center_site.html';
-                } else {
-                    alert(error.response.data.detail);
-                }
-            })
-    },
         // 删除地址
         del_address: function(index){
             axios.delete(this.host + '/users/addresses/' + this.addresses[index].id + '/', {
@@ -217,7 +217,7 @@ var vm = new Vue({
                     console.log(error.response.data);
                 })
         },
-          // 设置默认地址
+        // 设置默认地址
         set_default: function(index){
             axios.put(this.host + '/users/addresses/' + this.addresses[index].id + '/status/', {}, {
                     headers: {
@@ -232,7 +232,7 @@ var vm = new Vue({
                     console.log(error.response.data);
                 })
         },
-       // 展示编辑标题
+        // 展示编辑标题
         show_edit_title: function(index){
             this.input_title = this.addresses[index].title;
             for(var i=0; i<index; i++) {

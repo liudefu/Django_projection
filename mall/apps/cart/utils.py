@@ -22,7 +22,6 @@ def merge_cart_to_redis(request, user, response):
     selected_sku_id_list = []
     for sku_id, selected_count_dict in cart_cookie.items():
         cart[sku_id] = selected_count_dict["count"]
-        selected_count_dict["selected"] = True
         # 5. 如果cookie中的sku_id被选中, 添加到选中列表中
         if selected_count_dict["selected"]:
             selected_sku_id_list.append(sku_id)

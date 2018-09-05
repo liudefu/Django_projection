@@ -1,6 +1,5 @@
 # coding = utf-8
 import os
-import time
 
 from contents.global_setting.set_global import LOCAL_IP
 from mall.settings import BASE_DIR
@@ -23,7 +22,6 @@ http.tracker_server_port=80
 # 删除docker, storage
 os.system("docker container stop tracker")
 os.system("docker container stop storage")
-time.sleep(1)
 os.system("docker container rm tracker")
 os.system("docker container rm storage")
 

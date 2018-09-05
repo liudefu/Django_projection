@@ -30,13 +30,13 @@ class OrderCommitSerializer(serializers.ModelSerializer):
     """生成订单序列化器"""
     class Meta:
         model = OrderModel
-        fields = ["order_id", "pay_method"]
+        fields = ["order_id", "pay_method", "address"]
         read_only_fields = ["order_id"]
         extra_kwargs = {
-            # 'address': {
-            #     'write_only': True,
-            #     'required': True,
-            # },
+            'address': {
+                'write_only': True,
+                'required': True,
+            },
             'pay_method': {
                 'write_only': True,
                 'required': True
@@ -97,8 +97,9 @@ class OrderCommitSerializer(serializers.ModelSerializer):
                         order.total_count += count
                         # 商品总价
                         order.total_amount += sku.price * count
-                # 保存订单商品数据
-                    if i != 9 or result == 0:
+                        break
+                    # 保存订单商品数据
+                    if result == 0:
                         raise serializers.ValidationError("%s下单超时, 请重试!" % sku.name)
                 order.save()
             except Exception:

@@ -126,7 +126,7 @@ class AddressViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Upda
 
     def get_queryset(self):
         """获取查询集"""
-        return self.request.user.addresses.filter(is_delete=0)
+        return self.request.user.addresses.filter(is_deleted=False)
 
     def create(self, request, *args, **kwargs):
         """创建"""
@@ -216,7 +216,7 @@ class UserBrowsingHistoryView(mixins.CreateModelMixin, GenericAPIView):
             skus.append(sku)
         # 序列化
         serializer = SKUSerializer(skus, many=True)
-        return Response(serializer.data, safe=False)
+        return Response(serializer.data)
 
 
 from rest_framework.generics import ListAPIView

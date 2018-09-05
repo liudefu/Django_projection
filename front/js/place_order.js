@@ -89,7 +89,7 @@ var vm = new Vue({
                     .then(response => {
                         location.href = '/order_success.html?order_id='+response.data.order_id
                             +'&amount='+this.payment_amount
-                            +'&pay='+this.pay_method;
+                            +'&pay_by_alipay='+this.pay_method;
                     })
                     .catch(error => {
                         this.order_submitting = false;

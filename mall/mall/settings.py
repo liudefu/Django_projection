@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'django_crontab',  # 定时任务
     'haystack',
     "orders.apps.OrdersConfig",
+    "payment.apps.PaymentConfig",
 ]
 
 # 配置中间件
