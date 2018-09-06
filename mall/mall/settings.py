@@ -64,8 +64,10 @@ INSTALLED_APPS = [
     'haystack',
     "orders.apps.OrdersConfig",
     "payment.apps.PaymentConfig",
+    'xadmin',
+    'crispy_forms',
+    'reversion',
 ]
-
 # 配置中间件
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

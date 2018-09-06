@@ -2,24 +2,24 @@
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_USE_SSL = True
+# EMAIL_USE_SSL = True
 
-# EMAIL_USE_TLS = True
+EMAIL_USE_TLS = True
 
 # 发送邮件服务器
 EMAIL_HOST = "smtp.qq.com"
 
 # 发送邮件服务器端口
-EMAIL_PORT = 587
+EMAIL_PORT = 465
 
 # 发送人邮箱
 EMAIL_HOST_USER = "hpcm@foxmail.com"
 
 # 密码
-EMAIL_HOST_PASSWORD = "gzlcymqpwcmybchb"
+EMAIL_HOST_PASSWORD = "oxsittmtxohxbbfe"
 
 # 用户看到的发件人
-EMAIL_FROM = "美多商城<565956231@qq.com>"
+EMAIL_FROM = "hpcmpc@qq.com"
 
 # 激活url连接:
 VERIFY_BASE_URL = "http://www.meiduo.site:8080/success_verify_email.html?token="

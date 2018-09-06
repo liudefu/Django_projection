@@ -68,7 +68,7 @@
                 trade_id: '',
             },
             mounted: function(){
-                axios.put(this.host+'/pay/status/'+document.location.search,{}, {
+                axios.put(this.host+'/payment/status/'+document.location.search,{}, {
                         responseType: 'json'
                     })
                     .then(response => {
