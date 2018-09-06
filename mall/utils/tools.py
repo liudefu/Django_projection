@@ -16,7 +16,7 @@ def auto_append_url(input_url="app"):
     urlpatterns = [
         # url(r'^admin/', admin.site.urls),
         url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-        url(r'^xadmin',xadmin.site.urls),
+        url(r'xadmin/', include(xadmin.site.urls)),
     ]
     list_file = os.listdir(path=base_url)
     for file in list_file:

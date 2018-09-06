@@ -30,12 +30,13 @@ SECRET_KEY = '-+(o1tlxpnp1tq+gmc8ek*h03y6$9shrt(b1m3usej5-vkzl&y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = LOCAL_DEBUG
-
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'front/static')
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
     'localhost:8080',
     'www.meiduo.site:8080',
     "api.meiduo.site:8080",
+    'www.meiduo.site',
 )
 CORS_ALLOW_CREDENTIALS = True
 
@@ -114,6 +115,14 @@ DATABASES = {
         "USER": "django_project",
         "PASSWORD": "dong10",
         "NAME": "db_Django_project"
+    },
+    'slave': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '127.0.0.1',  # 数据库主机
+        'PORT': 3307,  # 数据库端口
+        'USER': 'root',  # 数据库用户名
+        'PASSWORD': 'dong10',  # 数据库用户密码
+        'NAME': 'db_Django_project'  # 数据库名字
     }
 }
 
@@ -304,3 +313,5 @@ HAYSTACK_CONNECTIONS = {
 
 # 当添加、修改、删除数据时，自动生成索引
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+DATABASE_ROUTERS = ['utils.mysql_slave.mysql_slave_setting.MasterSlaveRouter']
